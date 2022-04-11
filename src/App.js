@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Liste from "./containers/Liste";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      listeFruits: ["Pomme", "Banane", "Abricot", "Fraise"],
+      listeLegumes: ["Salade", "Courgette", "Poivron", "Poireau"],
+    };
+  }
+  render() {
+    const random = Math.random();
+    return (
+      <>
+        {random > 0.5 ? (
+          <Liste list={this.state.listeFruits} />
+        ) : (
+          <Liste list={this.state.listeLegumes} />
+        )}
+      </>
+    );
+  }
 }
 
 export default App;
